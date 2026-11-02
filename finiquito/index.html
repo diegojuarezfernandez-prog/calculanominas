@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Calculadora de finiquito e indemnización por despido 2026</title>
+<meta name="description" content="Calcula gratis tu finiquito y tu indemnización en 2026: vacaciones no disfrutadas, pagas extra, despido improcedente, objetivo, fin de contrato o baja voluntaria.">
+<link rel="canonical" href="https://calculanominas.es/finiquito/">
+<meta property="og:title" content="Calculadora de finiquito e indemnización 2026">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://calculanominas.es/finiquito/">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%231f6f50'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>€</text></svg>">
+<link rel="stylesheet" href="../styles.css">
+<!-- ANUNCIOS: cuando Google AdSense apruebe la web, pega aquí su código <script> -->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"WebApplication","name":"Calculadora de finiquito 2026","applicationCategory":"FinanceApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"inLanguage":"es-ES"},
+{"@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"¿Qué diferencia hay entre finiquito e indemnización?","acceptedAnswer":{"@type":"Answer","text":"El finiquito son las cantidades que la empresa te debe siempre que termina la relación laboral: días trabajados, vacaciones no disfrutadas y parte proporcional de las pagas extra. La indemnización solo se cobra en algunos casos, como un despido o el fin de un contrato temporal."}},
+{"@type":"Question","name":"¿Cuánto es la indemnización por despido improcedente en 2026?","acceptedAnswer":{"@type":"Answer","text":"33 días de salario por año trabajado, con un máximo de 24 mensualidades. Para el tiempo trabajado antes del 12 de febrero de 2012 se aplican 45 días por año."}},
+{"@type":"Question","name":"¿Si me doy de baja voluntaria cobro finiquito?","acceptedAnswer":{"@type":"Answer","text":"Sí. Aunque te vayas por voluntad propia, la empresa debe pagarte el finiquito. Lo que no cobras es indemnización, y no tienes derecho a paro."}},
+{"@type":"Question","name":"¿El finiquito paga IRPF?","acceptedAnswer":{"@type":"Answer","text":"Sí, el finiquito tributa como una nómina normal. La indemnización por despido, en la cuantía que marca la ley, está exenta de IRPF hasta 180.000 euros."}}
+]}]}
+</script>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="logo" href="/">Calcula<span>Nominas</span>.es</a>
+  <nav><a href="/">Sueldo neto</a><a href="/neto-a-bruto/">Neto a bruto</a><a href="/finiquito/">Finiquito</a><a href="/paro/">Paro</a></nav>
+</div></header>
+
+<main class="wrap">
+  <h1>Calculadora de finiquito e indemnización 2026</h1>
+  <p class="lead">Calcula cuánto te debe pagar la empresa al terminar tu contrato: el finiquito y, si te corresponde, la indemnización por despido.</p>
+
+  <div class="grid">
+    <form class="card" id="calc" onsubmit="return false" aria-label="Datos para el cálculo">
+      <label for="tipo">Motivo de la salida</label>
+      <select id="tipo">
+        <option value="improcedente">Despido improcedente</option>
+        <option value="objetivo">Despido objetivo (causas económicas, técnicas…)</option>
+        <option value="temporal">Fin de contrato temporal</option>
+        <option value="voluntaria">Baja voluntaria</option>
+        <option value="disciplinario">Despido disciplinario procedente</option>
+      </select>
+
+      <div class="row">
+        <div><label for="inicio">Fecha de alta</label><input id="inicio" type="date" value="2022-03-01"></div>
+        <div><label for="fin">Último día trabajado</label><input id="fin" type="date"></div>
+      </div>
+
+      <label for="bruto">Salario bruto anual (€)</label>
+      <input id="bruto" type="text" inputmode="decimal" value="28000" autocomplete="off">
+
+      <label>Pagas extra</label>
+      <div class="seg">
+        <label><input type="radio" name="pagas" value="14" checked><span>14 pagas</span></label>
+        <label><input type="radio" name="pagas" value="12"><span>Prorrateadas (12)</span></label>
+      </div>
+
+      <div class="row">
+        <div><label for="vacAnuales">Vacaciones al año <span class="hint">(días naturales)</span></label><input id="vacAnuales" type="number" min="30" max="60" value="30"></div>
+        <div><label for="vacDisfrutadas">Ya disfrutadas este año</label><input id="vacDisfrutadas" type="number" min="0" max="60" value="0"></div>
+      </div>
+
+      <div id="preaviso-wrap" hidden>
+        <label for="preaviso">Días de preaviso que faltaron <span class="hint" id="preaviso-hint"></span></label>
+        <input id="preaviso" type="number" min="0" max="15" value="0">
+      </div>
+
+      <label class="check" style="margin-top:16px"><input id="mesCobrado" type="checkbox"> Ya he cobrado los días trabajados de este último mes</label>
+    </form>
+
+    <section class="card result" aria-live="polite">
+      <div class="sub" style="margin:0 0 4px">Total a cobrar (bruto)</div>
+      <div class="big" id="total">—</div>
+      <div class="sub" id="total-sub"></div>
+
+      <div class="kpis">
+        <div class="kpi"><small>Finiquito</small><b id="k-fin">—</b></div>
+        <div class="kpi"><small>Indemnización</small><b id="k-ind">—</b></div>
+      </div>
+
+      <table class="desglose">
+        <tr><td>Días trabajados del último mes <span class="hint" id="h-mes"></span></td><td id="d-mes"></td></tr>
+        <tr><td>Vacaciones no disfrutadas <span class="hint" id="h-vac"></span></td><td id="d-vac"></td></tr>
+        <tr class="pe"><td>Parte proporcional paga de Navidad <span class="hint" id="h-nav"></span></td><td id="d-nav"></td></tr>
+        <tr class="pe"><td>Parte proporcional paga de verano <span class="hint" id="h-ver"></span></td><td id="d-ver"></td></tr>
+        <tr id="r-pre" hidden><td id="l-pre">Preaviso</td><td id="d-pre"></td></tr>
+        <tr class="total"><td>Finiquito</td><td id="d-fin"></td></tr>
+        <tr><td>Indemnización <span class="hint" id="h-ind"></span></td><td id="d-ind"></td></tr>
+        <tr class="total"><td>Total</td><td id="d-total"></td></tr>
+      </table>
+      <p class="note" id="nota-ind" hidden></p>
+      <p class="note" id="nota-paro"></p>
+      <p class="note">Importes brutos y orientativos. El finiquito lleva retención de IRPF y cotización como una nómina; la indemnización legal está exenta. Tu convenio puede mejorar estas cantidades o fijar otras fechas para las pagas extra.</p>
+    </section>
+  </div>
+
+  <!-- ANUNCIO 1: pega aquí un bloque de anuncio de AdSense -->
+  <div class="ad">Espacio publicitario</div>
+
+  <article>
+    <h2>Qué incluye el finiquito</h2>
+    <p>El finiquito es el documento con el que se liquidan las cantidades pendientes al terminar la relación laboral. <strong>Se cobra siempre</strong>, sea cual sea el motivo de la salida, incluso si te vas por voluntad propia. Incluye:</p>
+    <ul>
+      <li><strong>Salario de los días trabajados</strong> en el último mes que todavía no has cobrado.</li>
+      <li><strong>Vacaciones generadas y no disfrutadas.</strong> Se generan unos 2,5 días por mes trabajado (30 días naturales al año como mínimo). Si has disfrutado más de las que te correspondían, la empresa puede descontarlas.</li>
+      <li><strong>Parte proporcional de las pagas extra</strong>, si cobras en 14 pagas. Si las tienes prorrateadas en 12, ya las has ido cobrando cada mes.</li>
+      <li>Otros conceptos pendientes: horas extra, pluses o comisiones no pagadas.</li>
+    </ul>
+
+    <h2>Indemnización por despido en 2026</h2>
+    <div class="scroll"><table class="tabla">
+      <tr><th>Motivo</th><th>Indemnización</th><th>Máximo</th><th>¿Paro?</th></tr>
+      <tr><td>Despido improcedente</td><td>33 días por año</td><td>24 mensualidades</td><td>Sí</td></tr>
+      <tr><td>Despido objetivo</td><td>20 días por año</td><td>12 mensualidades</td><td>Sí</td></tr>
+      <tr><td>Fin de contrato temporal</td><td>12 días por año</td><td>—</td><td>Sí</td></tr>
+      <tr><td>Despido disciplinario procedente</td><td>Sin indemnización</td><td>—</td><td>Sí</td></tr>
+      <tr><td>Baja voluntaria</td><td>Sin indemnización</td><td>—</td><td>No</td></tr>
+    </table></div>
+    <p>Los periodos inferiores a un año se prorratean por meses: un mes empezado cuenta como mes completo. Para calcular el salario diario se usa el salario bruto anual con las pagas extra incluidas, dividido entre 365.</p>
+    <h3>Si empezaste a trabajar antes de 2012</h3>
+    <p>Para el tiempo trabajado antes del 12 de febrero de 2012, el despido improcedente se paga a 45 días por año, y desde entonces a 33. El total no puede superar 720 días de salario, salvo que solo el tramo anterior a 2012 ya los supere; en ese caso el límite es lo que salga de ese tramo, con un máximo de 42 mensualidades. La calculadora lo aplica automáticamente.</p>
+    <p>El Ministerio de Trabajo está negociando una reforma de las indemnizaciones por despido, pero a fecha de esta página no se ha aprobado. Si cambian, actualizaremos la calculadora.</p>
+
+    <!-- ANUNCIO 2: pega aquí otro bloque de anuncio de AdSense -->
+    <div class="ad">Espacio publicitario</div>
+
+    <h2>El preaviso</h2>
+    <p>Si te vas voluntariamente, normalmente debes avisar con <strong>15 días</strong> de antelación (o lo que diga tu convenio). Si no lo haces, la empresa puede descontarte del finiquito los días que falten. En el despido objetivo es al revés: la empresa debe avisarte con 15 días o pagarte esos días.</p>
+
+    <h2>Preguntas frecuentes</h2>
+    <h3>¿Tengo que firmar el finiquito?</h3>
+    <p>No estás obligado a firmarlo si no estás de acuerdo. Si lo firmas, puedes añadir «no conforme» junto a tu firma: así cobras lo que te ofrecen y conservas el derecho a reclamar. Tienes derecho a que un representante de los trabajadores esté presente.</p>
+    <h3>¿Cuánto tiempo tengo para reclamar?</h3>
+    <p>Para impugnar un despido tienes <strong>20 días hábiles</strong> desde la fecha de efectos. Para reclamar cantidades del finiquito, el plazo es de un año.</p>
+    <h3>¿El finiquito paga impuestos?</h3>
+    <p>Sí: tributa en el IRPF y cotiza a la Seguridad Social como cualquier nómina. La indemnización por despido, en el importe que marca la ley, está exenta de IRPF hasta 180.000 €.</p>
+    <h3>¿Cuánto cobraré de sueldo neto en mi próximo trabajo?</h3>
+    <p>Puedes calcularlo con nuestra <a href="/">calculadora de sueldo neto</a>.</p>
+  </article>
+</main>
+
+<footer><div class="wrap">
+  <p><a href="/aviso-legal.html">Aviso legal</a><a href="/privacidad.html">Privacidad</a><a href="/cookies.html">Cookies</a></p>
+  <p>Cálculo según el Estatuto de los Trabajadores vigente en 2026. Los resultados son orientativos y no sustituyen el asesoramiento de un profesional.</p>
+</div></footer>
+
+<script src="finiquito.js"></script>
+<script>
+(function(){
+  "use strict";
+  var $=function(i){return document.getElementById(i)};
+  var eur=new Intl.NumberFormat("es-ES",{style:"currency",currency:"EUR"});
+  var n=function(x){return x.toLocaleString("es-ES",{maximumFractionDigits:2})};
+  var hoy=new Date(), pad=function(v){return String(v).padStart(2,"0")};
+  $("fin").value=hoy.getFullYear()+"-"+pad(hoy.getMonth()+1)+"-"+pad(hoy.getDate());
+
+  function pintar(){
+    var tipo=$("tipo").value, pagas=+document.querySelector('input[name="pagas"]:checked').value;
+    var o={inicio:$("inicio").value,fin:$("fin").value,
+      bruto:parseFloat(String($("bruto").value).replace(/\./g,"").replace(",","."))||0,
+      pagas:pagas,vacAnuales:+$("vacAnuales").value||30,vacDisfrutadas:+$("vacDisfrutadas").value||0,
+      mesCobrado:$("mesCobrado").checked,tipo:tipo,preavisoFalta:+$("preaviso").value||0};
+    var conPreaviso=tipo==="objetivo"||tipo==="voluntaria";
+    $("preaviso-wrap").hidden=!conPreaviso;
+    $("preaviso-hint").textContent=tipo==="voluntaria"?"(no avisaste)":"(no te avisaron)";
+    var r=Finiquito.calcular(o);
+    if(!r){$("total").textContent="—";$("total-sub").textContent="Revisa las fechas y el salario";return;}
+    $("total").textContent=eur.format(r.total);
+    $("total-sub").textContent=r.meses+" meses de antigüedad";
+    $("k-fin").textContent=eur.format(r.finiquito);
+    $("k-ind").textContent=eur.format(r.indemnizacion);
+    $("h-mes").textContent="("+r.diasMes+" días)";
+    $("d-mes").textContent=eur.format(r.salarioMes);
+    $("h-vac").textContent="("+n(r.vacPendientes)+" días)";
+    $("d-vac").textContent=eur.format(r.vacaciones);
+    document.querySelectorAll(".pe").forEach(function(tr){tr.hidden=pagas!==14});
+    $("h-nav").textContent="("+r.diasNav+" días)";$("d-nav").textContent=eur.format(r.extraNavidad);
+    $("h-ver").textContent="("+r.diasVer+" días)";$("d-ver").textContent=eur.format(r.extraVerano);
+    $("r-pre").hidden=!(conPreaviso&&r.preaviso!==0);
+    $("l-pre").textContent=r.preaviso<0?"Descuento por falta de preaviso":"Preaviso no respetado";
+    $("d-pre").textContent=eur.format(r.preaviso);
+    $("d-fin").textContent=eur.format(r.finiquito);
+    $("h-ind").textContent=r.diasIndem>0?"("+n(r.diasIndem)+" días de salario)":"";
+    $("d-ind").textContent=eur.format(r.indemnizacion);
+    $("d-total").textContent=eur.format(r.total);
+    $("nota-ind").hidden=!r.notaIndem;$("nota-ind").textContent=r.notaIndem;
+    $("nota-paro").textContent=r.paro?"Con este motivo de salida tienes derecho a solicitar la prestación por desempleo (paro) si has cotizado lo suficiente.":"Con una baja voluntaria no tienes derecho a paro.";
+  }
+  document.querySelectorAll("#calc input,#calc select").forEach(function(el){el.addEventListener("input",pintar);el.addEventListener("change",pintar)});
+  pintar();
+})();
+</script>
+</body>
+</html>

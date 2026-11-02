@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Calculadora de paro 2026: cuánto cobraré y durante cuánto tiempo</title>
+<meta name="description" content="Calcula gratis tu prestación por desempleo en 2026: cuánto cobrarás de paro al mes, durante cuántos meses y el total, con los topes del SEPE actualizados.">
+<link rel="canonical" href="https://calculanominas.es/paro/">
+<meta property="og:title" content="Calculadora de paro 2026">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://calculanominas.es/paro/">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%231f6f50'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>€</text></svg>">
+<link rel="stylesheet" href="../styles.css">
+<!-- ANUNCIOS: cuando Google AdSense apruebe la web, pega aquí su código <script> -->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"WebApplication","name":"Calculadora de paro 2026","applicationCategory":"FinanceApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"inLanguage":"es-ES"},
+{"@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"¿Cuánto se cobra de paro en 2026?","acceptedAnswer":{"@type":"Answer","text":"El 70 % de tu base reguladora durante los primeros 180 días y el 60 % a partir del día 181, con un mínimo de 560 € al mes (749 € con hijos) y un máximo de 1.225 € sin hijos, 1.400 € con un hijo y 1.575 € con dos o más."}},
+{"@type":"Question","name":"¿Cuántos días hay que cotizar para cobrar el paro?","acceptedAnswer":{"@type":"Answer","text":"Como mínimo 360 días en los últimos seis años, lo que da derecho a 120 días de prestación. Con 2.160 días o más se alcanza el máximo de 720 días (24 meses)."}},
+{"@type":"Question","name":"¿Qué es la base reguladora del paro?","acceptedAnswer":{"@type":"Answer","text":"La media de tus bases de cotización por desempleo de los últimos 180 días trabajados, sin contar las horas extra."}}
+]}]}
+</script>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="logo" href="/">Calcula<span>Nominas</span>.es</a>
+  <nav><a href="/">Sueldo neto</a><a href="/neto-a-bruto/">Neto a bruto</a><a href="/finiquito/">Finiquito</a><a href="/paro/">Paro</a></nav>
+</div></header>
+
+<main class="wrap">
+  <h1>Calculadora de paro 2026</h1>
+  <p class="lead">Descubre cuánto cobrarás de prestación por desempleo cada mes, durante cuánto tiempo y cuánto suma en total, con las cuantías del SEPE vigentes en 2026.</p>
+
+  <div class="grid">
+    <form class="card" id="calc" onsubmit="return false" aria-label="Datos para el cálculo">
+      <label for="bruto">Salario bruto anual en tu último empleo (€)</label>
+      <input id="bruto" type="text" inputmode="decimal" value="24000" autocomplete="off">
+
+      <label>Tiempo cotizado en los últimos 6 años</label>
+      <div class="row">
+        <div><label for="anios" class="hint" style="margin-top:0">Años</label><input id="anios" type="number" min="0" max="6" value="3"></div>
+        <div><label for="meses" class="hint" style="margin-top:0">Meses</label><input id="meses" type="number" min="0" max="11" value="0"></div>
+      </div>
+
+      <label for="hijos">Hijos menores de 26 a tu cargo</label>
+      <input id="hijos" type="number" min="0" max="10" value="0">
+
+      <details class="more">
+        <summary>Más opciones</summary>
+        <label for="base">Base de cotización media de los últimos 6 meses (€/mes) <span class="hint">(aparece en tus nóminas; si la rellenas, se usa en lugar del salario)</span></label>
+        <input id="base" type="text" inputmode="decimal" placeholder="Opcional">
+        <label for="parcial">Jornada en tu último empleo (%)</label>
+        <input id="parcial" type="number" min="1" max="100" value="100">
+      </details>
+    </form>
+
+    <section class="card result" aria-live="polite">
+      <div id="sin-derecho" class="note" hidden style="font-size:1rem;color:var(--ink)">Necesitas al menos <strong>360 días cotizados</strong> en los últimos 6 años para cobrar la prestación contributiva. Puede que tengas derecho a un subsidio por desempleo: consúltalo en el SEPE.</div>
+      <div id="con-derecho">
+        <div class="sub" style="margin:0 0 4px">Primeros 6 meses</div>
+        <div class="big" id="neto1">—</div>
+        <div class="sub" id="neto1-sub"></div>
+
+        <div class="kpis">
+          <div class="kpi"><small>Desde el mes 7</small><b id="k-neto2">—</b></div>
+          <div class="kpi"><small>Duración</small><b id="k-dur">—</b></div>
+        </div>
+
+        <table class="desglose">
+          <tr><td>Base reguladora</td><td id="d-base"></td></tr>
+          <tr><td>Prestación meses 1–6 <span class="hint">(70 %)</span> <span class="hint" id="t1"></span></td><td id="d-b1"></td></tr>
+          <tr id="r2"><td>Prestación desde el mes 7 <span class="hint">(60 %)</span> <span class="hint" id="t2"></span></td><td id="d-b2"></td></tr>
+          <tr><td>Cotización a la Seg. Social <span class="hint">(4,70 %)</span></td><td id="d-ss"></td></tr>
+          <tr class="total"><td>Total en toda la prestación (neto)</td><td id="d-total"></td></tr>
+        </table>
+        <p class="note">Topes para tu caso: mínimo <span id="d-min"></span> y máximo <span id="d-max"></span> al mes.</p>
+      </div>
+      <p class="note">Cálculo orientativo: el SEPE usa tus bases de cotización reales y días exactos. Si tu prestación anual supera el mínimo exento, el SEPE también puede retenerte IRPF.</p>
+    </section>
+  </div>
+
+  <!-- ANUNCIO 1: pega aquí un bloque de anuncio de AdSense -->
+  <div class="ad">Espacio publicitario</div>
+
+  <article>
+    <h2>Cómo se calcula el paro en 2026</h2>
+    <p>La prestación contributiva por desempleo depende de dos cosas: <strong>cuánto cotizabas</strong> y <strong>cuánto tiempo has cotizado</strong>.</p>
+    <h3>1. La base reguladora</h3>
+    <p>Es la media de tus bases de cotización por desempleo de los <strong>últimos 180 días</strong> trabajados, sin incluir horas extra. Para la mayoría de personas equivale a su salario bruto mensual con las pagas extra prorrateadas (salario bruto anual dividido entre 12).</p>
+    <h3>2. El porcentaje</h3>
+    <ul>
+      <li><strong>Primeros 180 días:</strong> cobras el 70 % de la base reguladora.</li>
+      <li><strong>A partir del día 181:</strong> el 60 %.</li>
+    </ul>
+    <h3>3. Los límites</h3>
+    <p>La cuantía nunca puede quedar fuera de estos límites, que se calculan sobre el IPREM de 2026 (600 € al mes, 700 € con la parte proporcional de pagas):</p>
+    <div class="scroll"><table class="tabla">
+      <tr><th>Situación</th><th>Mínimo al mes</th><th>Máximo al mes</th></tr>
+      <tr><td>Sin hijos</td><td>560 €</td><td>1.225 €</td></tr>
+      <tr><td>1 hijo</td><td>749 €</td><td>1.400 €</td></tr>
+      <tr><td>2 o más hijos</td><td>749 €</td><td>1.575 €</td></tr>
+    </table></div>
+    <p>Si trabajabas a jornada parcial, los límites se reducen en la misma proporción que tu jornada.</p>
+    <h3>4. Los descuentos</h3>
+    <p>Mientras cobras el paro sigues cotizando a la Seguridad Social. El SEPE te descuenta el <strong>4,70 % de la base reguladora</strong> cada mes, y también puede retenerte IRPF si el total que vas a cobrar en el año lo requiere.</p>
+
+    <!-- ANUNCIO 2: pega aquí otro bloque de anuncio de AdSense -->
+    <div class="ad">Espacio publicitario</div>
+
+    <h2>¿Cuánto tiempo se cobra el paro?</h2>
+    <p>Depende de los días que hayas cotizado en los últimos seis años y que no hayas usado ya para otra prestación:</p>
+    <div class="scroll"><table class="tabla">
+      <tr><th>Días cotizados</th><th>Días de paro</th><th>Meses</th></tr>
+      <tr><td>360 – 539</td><td>120</td><td>4</td></tr>
+      <tr><td>540 – 719</td><td>180</td><td>6</td></tr>
+      <tr><td>720 – 899</td><td>240</td><td>8</td></tr>
+      <tr><td>900 – 1.079</td><td>300</td><td>10</td></tr>
+      <tr><td>1.080 – 1.259</td><td>360</td><td>12</td></tr>
+      <tr><td>1.260 – 1.439</td><td>420</td><td>14</td></tr>
+      <tr><td>1.440 – 1.619</td><td>480</td><td>16</td></tr>
+      <tr><td>1.620 – 1.799</td><td>540</td><td>18</td></tr>
+      <tr><td>1.800 – 1.979</td><td>600</td><td>20</td></tr>
+      <tr><td>1.980 – 2.159</td><td>660</td><td>22</td></tr>
+      <tr><td>2.160 o más</td><td>720</td><td>24</td></tr>
+    </table></div>
+
+    <h2>Preguntas frecuentes</h2>
+    <h3>¿Tengo derecho a paro si me voy voluntariamente?</h3>
+    <p>No. La baja voluntaria no da derecho a la prestación. Sí tienes derecho si te despiden (incluido el despido disciplinario) o si termina tu contrato temporal. Puedes calcular lo que te corresponde al salir con la <a href="/finiquito/">calculadora de finiquito</a>.</p>
+    <h3>¿Cuándo tengo que pedirlo?</h3>
+    <p>Tienes <strong>15 días hábiles</strong> desde el día siguiente al fin de tu contrato. Si lo pides más tarde no lo pierdes, pero se descuentan de tu prestación los días de retraso.</p>
+    <h3>¿Puedo trabajar mientras cobro el paro?</h3>
+    <p>Desde la reforma de 2024 es posible compatibilizar el paro con un empleo en algunos casos, mediante el llamado complemento de apoyo al empleo. Consulta en el SEPE si tu situación lo permite.</p>
+    <h3>¿Y si no he cotizado 360 días?</h3>
+    <p>No tendrás prestación contributiva, pero puede que tengas derecho a un <strong>subsidio por desempleo</strong>, que tiene requisitos propios (por ejemplo, haber cotizado al menos 90 días).</p>
+  </article>
+</main>
+
+<footer><div class="wrap">
+  <p><a href="/aviso-legal.html">Aviso legal</a><a href="/privacidad.html">Privacidad</a><a href="/cookies.html">Cookies</a></p>
+  <p>Cuantías de 2026 según el IPREM vigente y la normativa del SEPE. Los resultados son orientativos.</p>
+</div></footer>
+
+<script src="paro.js"></script>
+<script>
+(function(){
+  "use strict";
+  var $=function(i){return document.getElementById(i)};
+  var eur=new Intl.NumberFormat("es-ES",{style:"currency",currency:"EUR"});
+  var num=function(v){return parseFloat(String(v).replace(/\./g,"").replace(",","."))||0};
+  function pintar(){
+    var base=num($("base").value)||num($("bruto").value)/12;
+    var dias=Math.round((+$("anios").value||0)*365+(+$("meses").value||0)*30.42);
+    var r=Paro.calcular({baseMensual:base,diasCotizados:dias,hijos:+$("hijos").value||0,parcial:+$("parcial").value||100});
+    $("sin-derecho").hidden=r.derecho; $("con-derecho").hidden=!r.derecho;
+    if(!r.derecho) return;
+    $("neto1").textContent=eur.format(r.primeros.neto)+"/mes";
+    $("neto1-sub").textContent="netos ("+eur.format(r.primeros.bruto)+" brutos)";
+    $("k-neto2").textContent=r.meses>6?eur.format(r.despues.neto):"—";
+    $("k-dur").textContent=r.meses+" meses";
+    $("d-base").textContent=eur.format(r.base)+"/mes";
+    $("d-b1").textContent=eur.format(r.primeros.bruto);
+    $("t1").textContent=r.primeros.tope?"· tope "+r.primeros.tope:"";
+    $("r2").hidden=r.meses<=6;
+    $("d-b2").textContent=eur.format(r.despues.bruto);
+    $("t2").textContent=r.despues.tope?"· tope "+r.despues.tope:"";
+    $("d-ss").textContent="− "+eur.format(r.primeros.ss)+"/mes";
+    $("d-total").textContent=eur.format(r.totalNeto);
+    $("d-min").textContent=eur.format(r.min); $("d-max").textContent=eur.format(r.max);
+  }
+  document.querySelectorAll("#calc input").forEach(function(el){el.addEventListener("input",pintar)});
+  pintar();
+})();
+</script>
+</body>
+</html>

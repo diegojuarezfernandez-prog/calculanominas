@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Calculadora de neto a bruto 2026: ¿cuánto bruto es mi sueldo neto?</title>
+<meta name="description" content="Calcula qué salario bruto anual necesitas para cobrar un sueldo neto concreto al mes en 2026. Ideal para negociar una oferta de trabajo.">
+<link rel="canonical" href="https://calculanominas.es/neto-a-bruto/">
+<meta property="og:title" content="Calculadora de neto a bruto 2026">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://calculanominas.es/neto-a-bruto/">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%231f6f50'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>€</text></svg>">
+<link rel="stylesheet" href="../styles.css">
+<!-- ANUNCIOS: cuando Google AdSense apruebe la web, pega aquí su código <script> -->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"WebApplication","name":"Calculadora de neto a bruto 2026","applicationCategory":"FinanceApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"inLanguage":"es-ES"},
+{"@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"¿Cuánto es 1.500 euros netos en bruto?","acceptedAnswer":{"@type":"Answer","text":"Para una persona soltera sin hijos con contrato indefinido, cobrar 1.500 € netos al mes en 14 pagas equivale a unos 27.200 € brutos al año en 2026. En 12 pagas serían unos 22.100 € brutos."}},
+{"@type":"Question","name":"¿Por qué no basta con sumar un porcentaje al neto?","acceptedAnswer":{"@type":"Answer","text":"Porque el IRPF es progresivo: cuanto más ganas, mayor es el porcentaje que te retienen. Por eso hay que calcular el bruto aplicando el mismo procedimiento que usa Hacienda."}}
+]}]}
+</script>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="logo" href="/">Calcula<span>Nominas</span>.es</a>
+  <nav><a href="/">Sueldo neto</a><a href="/neto-a-bruto/">Neto a bruto</a><a href="/finiquito/">Finiquito</a><a href="/paro/">Paro</a></nav>
+</div></header>
+
+<main class="wrap">
+  <h1>Calculadora de neto a bruto 2026</h1>
+  <p class="lead">¿Quieres cobrar una cantidad concreta al mes? Descubre qué salario bruto anual tienes que pedir. Muy útil para negociar una oferta de trabajo.</p>
+
+  <div class="grid">
+    <form class="card" id="calc" onsubmit="return false" aria-label="Datos para el cálculo">
+      <label for="neto">Sueldo neto que quieres cobrar al mes (€)</label>
+      <input id="neto" type="text" inputmode="decimal" value="1500" autocomplete="off">
+
+      <label>Número de pagas</label>
+      <div class="seg">
+        <label><input type="radio" name="pagas" value="14" checked><span>14 pagas</span></label>
+        <label><input type="radio" name="pagas" value="12"><span>12 pagas</span></label>
+      </div>
+
+      <label>Tipo de contrato</label>
+      <div class="seg">
+        <label><input type="radio" name="contrato" value="indefinido" checked><span>Indefinido</span></label>
+        <label><input type="radio" name="contrato" value="temporal"><span>Temporal</span></label>
+      </div>
+
+      <div class="row">
+        <div><label for="edad">Edad</label><input id="edad" type="number" min="16" max="99" value="30"></div>
+        <div><label for="hijos">Hijos <span class="hint">(menores de 25)</span></label><input id="hijos" type="number" min="0" max="10" value="0"></div>
+      </div>
+
+      <details class="more">
+        <summary>Más opciones</summary>
+        <label for="situacion">Situación familiar</label>
+        <select id="situacion">
+          <option value="3" selected>Soltero/a, o casado/a con cónyuge con ingresos</option>
+          <option value="2">Casado/a, cónyuge con ingresos menores de 1.500 €/año</option>
+          <option value="1">Familia monoparental (soltero/a con hijos a cargo)</option>
+        </select>
+      </details>
+    </form>
+
+    <section class="card result" aria-live="polite">
+      <div class="sub" style="margin:0 0 4px">Salario bruto anual necesario</div>
+      <div class="big" id="bruto">—</div>
+      <div class="sub" id="bruto-sub"></div>
+      <div class="kpis">
+        <div class="kpi"><small>Retención IRPF</small><b id="k-irpf">—</b></div>
+        <div class="kpi"><small>Neto al año</small><b id="k-anual">—</b></div>
+      </div>
+      <table class="desglose">
+        <tr><td>Salario bruto anual</td><td id="d-bruto"></td></tr>
+        <tr><td>Seguridad Social</td><td id="d-ss"></td></tr>
+        <tr><td>Retención de IRPF</td><td id="d-irpf"></td></tr>
+        <tr class="total"><td>Neto anual</td><td id="d-neto"></td></tr>
+      </table>
+      <p class="note">Cálculo orientativo para territorio común (no incluye País Vasco ni Navarra), con las retenciones de IRPF y las cotizaciones de 2026.</p>
+    </section>
+  </div>
+
+  <!-- ANUNCIO 1: pega aquí un bloque de anuncio de AdSense -->
+  <div class="ad">Espacio publicitario</div>
+
+  <article>
+    <h2>Cómo pasar de neto a bruto</h2>
+    <p>Las ofertas de trabajo en España casi siempre indican el <strong>salario bruto anual</strong>, pero lo que importa en tu día a día es lo que llega a tu cuenta cada mes. Esta calculadora hace el camino inverso: le dices cuánto quieres cobrar en neto y busca el salario bruto que, tras restar la Seguridad Social y el IRPF, te deja exactamente esa cantidad.</p>
+    <p>No basta con sumar un porcentaje fijo al neto, porque el IRPF es progresivo: al subir el bruto también sube el porcentaje que te retienen. Por eso la calculadora usa el mismo procedimiento de cálculo de retenciones que la Agencia Tributaria.</p>
+
+    <h2>Tabla de neto a bruto en 2026</h2>
+    <p>Persona soltera, sin hijos, contrato indefinido:</p>
+    <div class="scroll"><table class="tabla" id="tabla">
+      <tr><th>Neto al mes</th><th>Bruto anual (14 pagas)</th><th>Bruto anual (12 pagas)</th></tr>
+      <tr><td>1.000 €</td><td>15.149 €</td><td>12.835 €</td></tr>
+      <tr><td>1.200 €</td><td>20.181 €</td><td>15.401 €</td></tr>
+      <tr><td>1.500 €</td><td>27.204 €</td><td>22.124 €</td></tr>
+      <tr><td>1.800 €</td><td>33.728 €</td><td>27.671 €</td></tr>
+      <tr><td>2.000 €</td><td>38.077 €</td><td>31.336 €</td></tr>
+      <tr><td>2.500 €</td><td>49.989 €</td><td>40.585 €</td></tr>
+      <tr><td>3.000 €</td><td>62.027 €</td><td>50.769 €</td></tr>
+    </table></div>
+
+    <!-- ANUNCIO 2: pega aquí otro bloque de anuncio de AdSense -->
+    <div class="ad">Espacio publicitario</div>
+
+    <h2>Preguntas frecuentes</h2>
+    <h3>¿Por qué en 14 pagas necesito más bruto?</h3>
+    <p>Porque con 14 pagas el sueldo anual se reparte entre 14: para cobrar lo mismo cada mes, además de dos pagas extra del mismo importe, el total anual tiene que ser mayor. Si comparas sueldos anuales, 12 y 14 pagas son equivalentes.</p>
+    <h3>¿Qué bruto pido en una entrevista?</h3>
+    <p>Calcula el neto mensual que necesitas, mira el bruto que te sale aquí y redondea hacia arriba. Así evitas llevarte una sorpresa en tu primera nómina.</p>
+    <h3>¿Y al revés?</h3>
+    <p>Si ya tienes una oferta con el salario bruto, usa la <a href="/">calculadora de sueldo neto</a> para saber cuánto cobrarás.</p>
+  </article>
+</main>
+
+<footer><div class="wrap">
+  <p><a href="/aviso-legal.html">Aviso legal</a><a href="/privacidad.html">Privacidad</a><a href="/cookies.html">Cookies</a></p>
+  <p>Datos actualizados a 2026 según el algoritmo de retenciones de la Agencia Tributaria y la orden de cotización de la Seguridad Social. Los resultados son orientativos.</p>
+</div></footer>
+
+<script src="../calc.js"></script>
+<script>
+(function(){
+  "use strict";
+  var $=function(i){return document.getElementById(i)};
+  var eur=new Intl.NumberFormat("es-ES",{style:"currency",currency:"EUR"});
+  var eur0=new Intl.NumberFormat("es-ES",{style:"currency",currency:"EUR",maximumFractionDigits:0});
+  var pct=function(v){return v.toLocaleString("es-ES",{minimumFractionDigits:2,maximumFractionDigits:2})+" %"};
+
+  // Busca el bruto anual cuyo neto mensual coincide con el objetivo (búsqueda binaria)
+  function brutoPara(netoMes,o){
+    var lo=0,hi=Math.max(1000,netoMes*30),r;
+    for(var i=0;i<80;i++){
+      var mid=(lo+hi)/2; o.bruto=mid; r=SueldoNeto.calcular(o);
+      if(r.netoMensual<netoMes) lo=mid; else hi=mid;
+    }
+    o.bruto=Math.ceil(hi); return SueldoNeto.calcular(o);
+  }
+  function leer(){
+    return {pagas:+document.querySelector('input[name="pagas"]:checked').value,
+      temporal:document.querySelector('input[name="contrato"]:checked').value==="temporal",
+      edad:+$("edad").value||30,situacion:+$("situacion").value,hijos:+$("hijos").value||0};
+  }
+  function pintar(){
+    var neto=parseFloat(String($("neto").value).replace(/\./g,"").replace(",","."))||0;
+    if(neto<=0){$("bruto").textContent="—";return;}
+    var o=leer(), r=brutoPara(neto,o);
+    $("bruto").textContent=eur0.format(r.bruto);
+    $("bruto-sub").textContent="al año en "+r.pagas+" pagas · "+eur.format(r.bruto/r.pagas)+" brutos al mes";
+    $("k-irpf").textContent=pct(r.tipoIrpf);
+    $("k-anual").textContent=eur0.format(r.netoAnual);
+    $("d-bruto").textContent=eur.format(r.bruto);
+    $("d-ss").textContent="− "+eur.format(r.ssAnual);
+    $("d-irpf").textContent="− "+eur.format(r.irpfAnual);
+    $("d-neto").textContent=eur.format(r.netoAnual);
+  }
+  document.querySelectorAll("#calc input,#calc select").forEach(function(el){el.addEventListener("input",pintar);el.addEventListener("change",pintar)});
+  pintar();
+})();
+</script>
+</body>
+</html>
