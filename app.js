@@ -50,5 +50,8 @@
     el.addEventListener("input", pintar);
     el.addEventListener("change", pintar);
   });
+  // Cifra desde el enlace: /?bruto=30000 (lo usan las páginas por cifra)
+  var q = /[?&]bruto=(\d+(?:[.,]\d+)?)/.exec(location.search);
+  if (q) $("bruto").value = q[1];
   pintar();
 })();

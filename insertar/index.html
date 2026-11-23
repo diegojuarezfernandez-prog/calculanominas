@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pon gratis la calculadora de sueldo neto en tu web · CalculaNominas.es</title>
+<meta name="description" content="Inserta gratis en tu blog, web de empleo o gestoría una calculadora de sueldo neto 2026 siempre actualizada. Copia y pega el código.">
+<link rel="canonical" href="https://calculanominas.es/insertar/">
+<meta property="og:title" content="Pon gratis la calculadora de sueldo neto en tu web">
+<meta property="og:description" content="Inserta gratis en tu blog, web de empleo o gestoría una calculadora de sueldo neto 2026 siempre actualizada. Copia y pega el código.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://calculanominas.es/insertar/">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%231f6f50'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>€</text></svg>">
+<link rel="stylesheet" href="/styles.css">
+<!-- Google AdSense -->
+<meta name="google-adsense-account" content="ca-pub-2514120482306577">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2514120482306577" crossorigin="anonymous"></script>
+
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="logo" href="/">Calcula<span>Nominas</span>.es</a>
+  <nav><a href="/">Sueldo neto</a><a href="/neto-a-bruto/">Neto a bruto</a><a href="/finiquito/">Finiquito</a><a href="/paro/">Paro</a><a href="/paga-extra/">Paga extra</a><a href="/baja-medica/">Baja médica</a></nav>
+</div></header>
+
+<main class="wrap">
+  <h1>Pon la calculadora de sueldo neto en tu web</h1>
+  <p class="lead">¿Tienes un blog de empleo o finanzas, una gestoría o una web de ofertas de trabajo? Añade gratis nuestra calculadora de sueldo neto. Se actualiza sola cada vez que cambia la normativa, sin que tengas que hacer nada.</p>
+
+  <div class="grid">
+    <section class="card">
+      <h2 style="margin-top:0;font-size:1.15rem">1. Copia este código</h2>
+      <textarea id="codigo" class="code" rows="7" readonly>&lt;iframe src="https://calculanominas.es/widget/sueldo-neto/" title="Calculadora de sueldo neto 2026" width="100%" height="460" style="border:0;max-width:480px" loading="lazy"&gt;&lt;/iframe&gt;
+&lt;p style="font-size:13px;max-width:480px"&gt;Calculadora de &lt;a href="https://calculanominas.es/"&gt;sueldo neto&lt;/a&gt; de CalculaNominas.es&lt;/p&gt;</textarea>
+      <p><button class="btn" id="copiar" type="button">Copiar código</button> <span class="hint" id="copiado" hidden>Copiado</span></p>
+      <h2 style="font-size:1.15rem">2. Pégalo en tu página</h2>
+      <p>En WordPress, añade un bloque «HTML personalizado» y pega el código. En otras plataformas, pégalo donde quieras que aparezca la calculadora.</p>
+      <p class="note">Es gratis y sin registro. Solo te pedimos que mantengas el enlace de debajo de la calculadora.</p>
+    </section>
+    <section>
+      <div class="sub" style="margin:0 0 8px">Así se verá:</div>
+      <iframe src="/widget/sueldo-neto/" title="Calculadora de sueldo neto 2026" width="100%" height="460" style="border:0;max-width:480px"></iframe>
+    </section>
+  </div>
+
+  <article>
+    <h2>Preguntas frecuentes</h2>
+    <h3>¿Tiene publicidad?</h3>
+    <p>No. La calculadora insertada no muestra anuncios.</p>
+    <h3>¿Se actualiza sola?</h3>
+    <p>Sí. Usa el mismo cálculo que <a href="/">nuestra calculadora principal</a>, así que cuando cambian el IRPF o las cotizaciones se actualiza en tu web automáticamente.</p>
+    <h3>¿Guarda datos de mis visitantes?</h3>
+    <p>No. El cálculo se hace en el navegador de cada persona y no se envía ni se guarda nada.</p>
+    <h3>¿Puedo cambiar el tamaño?</h3>
+    <p>Sí, ajusta los valores <code>width</code> y <code>height</code> del código. Recomendamos una altura mínima de 440 píxeles.</p>
+    <p>¿Te interesa otra calculadora (finiquito, paro, paga extra) o una versión con tus colores? Escríbenos a <a href="mailto:diegojuarezfernandez@gmail.com">diegojuarezfernandez@gmail.com</a>.</p>
+  </article>
+</main>
+
+<footer><div class="wrap">
+  <p><a href="/aviso-legal.html">Aviso legal</a><a href="/privacidad.html">Privacidad</a><a href="/cookies.html">Cookies</a><a href="/como-calculamos/">Quiénes somos y cómo calculamos</a><a href="/insertar/">Pon la calculadora en tu web</a></p>
+  <p>Cálculos con la normativa de 2026. Los resultados son orientativos.</p>
+</div></footer>
+<script>
+document.getElementById("copiar").addEventListener("click",function(){
+  var t=document.getElementById("codigo"); t.select();
+  var ok=function(){document.getElementById("copiado").hidden=false};
+  if(navigator.clipboard){navigator.clipboard.writeText(t.value).then(ok,function(){document.execCommand("copy");ok()})}
+  else{document.execCommand("copy");ok()}
+});
+</script>
+</body>
+</html>

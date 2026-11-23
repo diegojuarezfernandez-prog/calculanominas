@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Calculadora de sueldo neto 2026 · CalculaNominas.es</title>
+<meta name="description" content="Calculadora de sueldo neto 2026.">
+<meta name="robots" content="noindex,follow">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%231f6f50'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>€</text></svg>">
+<link rel="stylesheet" href="/styles.css">
+
+
+<style>body{background:transparent}.w{max-width:480px;padding:2px}.w .card{padding:18px}.w .big{font-size:2.1rem}.w .brand{font-size:.8rem;margin-top:12px;color:var(--muted)}</style>
+</head>
+<body>
+<div class="w">
+  <form class="card" id="calc" onsubmit="return false">
+    <strong>Calculadora de sueldo neto 2026</strong>
+    <label for="bruto">Salario bruto anual (€)</label>
+    <input id="bruto" type="text" inputmode="decimal" value="25000" autocomplete="off">
+    <div class="row">
+      <div><label for="pagas">Pagas</label><select id="pagas"><option value="14">14 pagas</option><option value="12">12 pagas</option></select></div>
+      <div><label for="hijos">Hijos</label><input id="hijos" type="number" min="0" max="10" value="0"></div>
+    </div>
+    <div class="result" style="margin-top:16px">
+      <div class="sub" style="margin:0">Sueldo neto al mes</div>
+      <div class="big" id="neto">—</div>
+      <div class="sub" id="neto-sub" style="margin-bottom:0"></div>
+    </div>
+    <p class="brand">Cálculo con el IRPF y la Seguridad Social de 2026 · <a href="https://calculanominas.es/" target="_blank" rel="noopener">CalculaNominas.es</a> · <a href="https://calculanominas.es/?utm_source=widget" target="_blank" rel="noopener">más opciones</a></p>
+  </form>
+</div>
+<script src="/calc.js"></script>
+<script>
+(function(){
+  "use strict";
+  var eur=new Intl.NumberFormat("es-ES",{style:"currency",currency:"EUR"});
+  var pct=function(v){return v.toLocaleString("es-ES",{minimumFractionDigits:2,maximumFractionDigits:2})+" %"};
+  var num=function(v){return parseFloat(String(v).replace(/\./g,"").replace(",","."))||0};
+  var $=function(i){return document.getElementById(i)};
+  function pintar(){
+    var r=SueldoNeto.calcular({bruto:num($("bruto").value),pagas:+$("pagas").value,hijos:+$("hijos").value||0,situacion:3,edad:30});
+    $("neto").textContent=eur.format(r.netoMensual);
+    $("neto-sub").textContent="en "+r.pagas+" pagas · IRPF "+pct(r.tipoIrpf)+" · "+eur.format(r.netoAnual)+" netos al año";
+  }
+  document.querySelectorAll("#calc input,#calc select").forEach(function(el){el.addEventListener("input",pintar);el.addEventListener("change",pintar)});
+  pintar();
+})();
+</script>
+</body>
+</html>
