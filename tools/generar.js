@@ -26,6 +26,7 @@ escribir("baja-medica/index.html", N.bajaMedica());
 escribir("como-calculamos/index.html", N.comoCalculamos());
 escribir("insertar/index.html", N.insertar());
 escribir("widget/sueldo-neto/index.html", N.widget());
+escribir("cuota-autonomos/index.html", require("./pagina-autonomos.js").cuotaAutonomos());
 
 // 2. Páginas existentes: menú, pie, fecha de actualización y fuentes
 const EXISTENTES = {
@@ -45,6 +46,7 @@ for (const [ruta, fuentes] of Object.entries(EXISTENTES)) {
   const f = path.join(RAIZ, ruta);
   let h = fs.readFileSync(f, "utf8");
   h = h.replace(/<nav>[\s\S]*?<\/nav>/, T.NAV);
+  if (!h.includes("gc.zgo.at/count.js")) h = h.replace("</head>", T.ESTADISTICAS + "\n</head>");
   h = h.replace(/(<footer><div class="wrap">\s*)<p>[\s\S]*?<\/p>/, "$1" + T.PIE_ENLACES);
   if (fuentes) {
     h = h.replace(/\n\s*<p class="updated">[\s\S]*?<\/p>/, "");
@@ -60,7 +62,7 @@ for (const [ruta, fuentes] of Object.entries(EXISTENTES)) {
 }
 
 // 3. Sitemap
-const urls = ["/", "/neto-a-bruto/", "/finiquito/", "/paro/", "/paga-extra/", "/baja-medica/", "/sueldo-neto/",
+const urls = ["/", "/neto-a-bruto/", "/finiquito/", "/paro/", "/paga-extra/", "/baja-medica/", "/cuota-autonomos/", "/sueldo-neto/",
   ...C.BRUTOS.map((b) => `/sueldo-neto/${b}/`), ...C.NETOS.map((n) => `/neto-a-bruto/${n}/`),
   "/como-calculamos/", "/insertar/"];
 escribir("sitemap.xml", `<?xml version="1.0" encoding="UTF-8"?>
@@ -69,4 +71,4 @@ ${urls.map((u) => `  <url><loc>${T.DOMINIO}${u}</loc><lastmod>${T.ACTUALIZADO_IS
 </urlset>
 `);
 
-console.log(`Generadas ${C.BRUTOS.length + C.NETOS.length + 6} páginas; sitemap con ${urls.length} direcciones.`);
+console.log(`Generadas ${C.BRUTOS.length + C.NETOS.length + 7} páginas; sitemap con ${urls.length} direcciones.`);

@@ -13,7 +13,10 @@ const ADSENSE = `<!-- Google AdSense -->
 <meta name="google-adsense-account" content="ca-pub-2514120482306577">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2514120482306577" crossorigin="anonymous"></script>`;
 
-const NAV = `<nav><a href="/">Sueldo neto</a><a href="/neto-a-bruto/">Neto a bruto</a><a href="/finiquito/">Finiquito</a><a href="/paro/">Paro</a><a href="/paga-extra/">Paga extra</a><a href="/baja-medica/">Baja médica</a></nav>`;
+// Estadísticas de visitas sin cookies (GoatCounter). Se añade a todas las páginas menos al widget.
+const ESTADISTICAS = `<script data-goatcounter="https://calculanominas.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>`;
+
+const NAV =`<nav><a href="/">Sueldo neto</a><a href="/neto-a-bruto/">Neto a bruto</a><a href="/finiquito/">Finiquito</a><a href="/paro/">Paro</a><a href="/paga-extra/">Paga extra</a><a href="/baja-medica/">Baja médica</a><a href="/cuota-autonomos/">Autónomos</a></nav>`;
 
 const PIE_ENLACES = `<p><a href="/aviso-legal.html">Aviso legal</a><a href="/privacidad.html">Privacidad</a><a href="/cookies.html">Cookies</a><a href="/como-calculamos/">Quiénes somos y cómo calculamos</a><a href="/insertar/">Pon la calculadora en tu web</a></p>`;
 
@@ -29,7 +32,11 @@ const FUENTES = {
   lgss: ["BOE: Ley General de la Seguridad Social (texto consolidado)",
     "https://www.boe.es/buscar/act.php?id=BOE-A-2015-11724"],
   it: ["Seguridad Social: guía de la prestación por incapacidad temporal",
-    "https://www.seg-social.es/descarga/es/26112024guiacas"]
+    "https://www.seg-social.es/descarga/es/26112024guiacas"],
+  reta: ["BOE: Real Decreto-ley 3/2026 (cotización de autónomos en 2026)",
+    "https://www.boe.es/buscar/act.php?id=BOE-A-2026-2548"],
+  rdl13: ["BOE: Real Decreto-ley 13/2022 (sistema de cotización por ingresos reales y tablas de tramos)",
+    "https://www.boe.es/buscar/act.php?id=BOE-A-2022-12482"]
 };
 
 // Formato de números en español, con punto de miles también en 4 cifras (1.500)
@@ -55,7 +62,7 @@ ${noindex ? '<meta name="robots" content="noindex,follow">' : `<link rel="canoni
 <meta property="og:url" content="${DOMINIO}${path}">`}
 ${FAVICON}
 <link rel="stylesheet" href="/styles.css">
-${ads ? ADSENSE : ""}
+${ads ? ADSENSE + "\n" + ESTADISTICAS : ""}
 ${jsonld ? `<script type="application/ld+json">\n${JSON.stringify(jsonld)}\n</script>` : ""}${extra}
 </head>
 <body>`;
@@ -110,6 +117,6 @@ function migas(items) {
 }
 
 module.exports = {
-  ACTUALIZADO, ACTUALIZADO_ISO, ANIO, DOMINIO, NAV, PIE_ENLACES, FUENTES,
+  ACTUALIZADO, ACTUALIZADO_ISO, ANIO, DOMINIO, NAV, ESTADISTICAS, PIE_ENLACES, FUENTES,
   num, eur, eur2, pct, head, cabecera, pie, actualizado, bloqueFuentes, faqJson, faqHtml, migas
 };

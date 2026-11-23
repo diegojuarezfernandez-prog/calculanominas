@@ -348,6 +348,10 @@ ${T.cabecera()}
     <p>Los porcentajes de la prestación por incapacidad temporal (60 % del día 4 al 20 y 75 % desde el 21 en enfermedad común; 75 % desde el día siguiente en accidente de trabajo) sobre la base de cotización del mes anterior, con la base máxima de ${ANIO}.</p>
     <p>Fuentes: ${fu("it")}; ${fu("lgss")}.</p>
 
+    <h3><a href="/cuota-autonomos/">Cuota de autónomos</a></h3>
+    <p>Los rendimientos netos (ingresos menos gastos, con la deducción del 7 % o del 3 % para societarios) determinan el tramo de la tabla de cotización. En ${ANIO} se aplican los tramos de 2025 prorrogados, con un tipo del 31,5 %, la base mínima de 1.424,40 € para autónomos societarios y la tarifa plana de 80 € más el MEI. La previsión de 2027 usa los mismos tramos con el MEI al 1 % hasta que se apruebe la tabla oficial.</p>
+    <p>Fuentes: ${fu("reta")}; ${fu("rdl13")}.</p>
+
     <h2>Límites de los cálculos</h2>
     <ul>
       <li>Los resultados son <strong>orientativos</strong>. Tu nómina real depende de tu convenio, de tus complementos y de los datos que tenga tu empresa.</li>
