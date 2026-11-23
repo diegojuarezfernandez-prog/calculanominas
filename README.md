@@ -10,6 +10,7 @@ Web estática con calculadoras laborales y fiscales para España (2026):
 | Paro | `paro/index.html` | `paro/paro.js` (IPREM 2026) |
 | Paga extra de Navidad | `paga-extra/index.html` (generada) | `paga-extra/paga.js` + `calc.js` |
 | Baja médica | `baja-medica/index.html` (generada) | `baja-medica/baja.js` |
+| Cuota de autónomos | `cuota-autonomos/index.html` (generada) | `cuota-autonomos/cuota.js` (tramos 2026; 2027 provisional) |
 | Páginas por cifra | `sueldo-neto/<bruto>/`, `neto-a-bruto/<neto>/`, `sueldo-neto/` (generadas) | `calc.js` |
 | Quiénes somos y cómo calculamos | `como-calculamos/` (generada) | — |
 | Calculadora para otras webs | `insertar/` y `widget/sueldo-neto/` (generadas) | `calc.js` |
@@ -30,5 +31,9 @@ Netlify publica la rama `main` automáticamente. Los cambios de normativa se pro
 - `paro/paro.js`: IPREM, topes, porcentajes, tabla de duración.
 - `finiquito/finiquito.js`: días de indemnización por tipo de extinción y topes.
 - `baja-medica/baja.js`: porcentajes de la incapacidad temporal y base máxima de cotización.
+- `cuota-autonomos/cuota.js`: tabla de tramos (cuando se apruebe la de 2027, sustituir la previsión), tipos, MEI, base mínima de societarios y tarifa plana.
 - `tools/plantilla.js`: año (`ANIO`), fecha de actualización y enlaces a las fuentes oficiales.
 - Textos explicativos y tablas de ejemplo en cada `index.html`.
+
+## Estadísticas
+GoatCounter (sin cookies), cuenta `calculanominas`: https://calculanominas.goatcounter.com. El código está en `tools/plantilla.js` (`ESTADISTICAS`) y `tools/generar.js` lo añade a todas las páginas menos al widget.
