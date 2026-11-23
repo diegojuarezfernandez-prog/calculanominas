@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Calculadora de baja médica 2026: cuánto cobro de baja</title>
+<meta name="description" content="Calcula gratis cuánto cobrarás estando de baja en 2026: por enfermedad común (60 % y 75 %) o accidente de trabajo (75 %), quién te paga cada día y cuánto pierdes frente a tu sueldo.">
+<link rel="canonical" href="https://calculanominas.es/baja-medica/">
+<meta property="og:title" content="Calculadora de baja médica 2026">
+<meta property="og:description" content="Calcula gratis cuánto cobrarás estando de baja en 2026: por enfermedad común (60 % y 75 %) o accidente de trabajo (75 %), quién te paga cada día y cuánto pierdes frente a tu sueldo.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://calculanominas.es/baja-medica/">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%231f6f50'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>€</text></svg>">
+<link rel="stylesheet" href="/styles.css">
+<!-- Google AdSense -->
+<meta name="google-adsense-account" content="ca-pub-2514120482306577">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2514120482306577" crossorigin="anonymous"></script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Calculadora de baja médica 2026","applicationCategory":"FinanceApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"inLanguage":"es-ES"},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"¿Cuánto se cobra de baja por enfermedad común?","acceptedAnswer":{"@type":"Answer","text":"Los tres primeros días no se cobra nada (salvo que tu convenio diga otra cosa). Del día 4 al 20 se cobra el 60 % de la base reguladora y, a partir del día 21, el 75 %."}},{"@type":"Question","name":"¿Y si es un accidente de trabajo?","acceptedAnswer":{"@type":"Answer","text":"El día del accidente la empresa te paga el salario completo y, desde el día siguiente, cobras el 75 % de la base reguladora, sin necesidad de haber cotizado un mínimo."}},{"@type":"Question","name":"¿Qué es la base reguladora de la baja?","acceptedAnswer":{"@type":"Answer","text":"La base de cotización del mes anterior a la baja dividida entre 30 (si cobras por meses). Incluye la parte proporcional de las pagas extra, por eso suele ser algo mayor que tu nómina bruta mensual."}},{"@type":"Question","name":"¿Quién me paga cuando estoy de baja?","acceptedAnswer":{"@type":"Answer","text":"En enfermedad común, la empresa paga del día 4 al 15 y la Seguridad Social o la mutua desde el día 16, aunque normalmente lo sigues cobrando en la nómina porque la empresa lo adelanta (pago delegado)."}},{"@type":"Question","name":"¿Cuántos días hay que haber cotizado?","acceptedAnswer":{"@type":"Answer","text":"Para la baja por enfermedad común, 180 días en los últimos cinco años. Para el accidente de trabajo o la enfermedad profesional no se exige ningún periodo mínimo."}},{"@type":"Question","name":"¿La baja tributa en el IRPF?","acceptedAnswer":{"@type":"Answer","text":"Sí. La prestación por incapacidad temporal es un rendimiento del trabajo y lleva retención, y mientras estás de baja sigues cotizando a la Seguridad Social."}}]}]}
+</script>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="logo" href="/">Calcula<span>Nominas</span>.es</a>
+  <nav><a href="/">Sueldo neto</a><a href="/neto-a-bruto/">Neto a bruto</a><a href="/finiquito/">Finiquito</a><a href="/paro/">Paro</a><a href="/paga-extra/">Paga extra</a><a href="/baja-medica/">Baja médica</a></nav>
+</div></header>
+
+<main class="wrap">
+  <h1>Calculadora de baja médica 2026</h1>
+  <p class="lead">Calcula cuánto cobrarás durante una baja por enfermedad o accidente: cuánto te corresponde cada día, quién te lo paga y cuánto dejas de ingresar respecto a tu sueldo.</p>
+  <p class="updated">Actualizado el 23 de noviembre de 2026 · Datos oficiales de <a href="https://www.seg-social.es/descarga/es/26112024guiacas" rel="nofollow noopener" target="_blank">Seguridad Social</a> y <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2015-11724" rel="nofollow noopener" target="_blank">BOE</a> · <a href="/como-calculamos/">Cómo calculamos</a></p>
+
+  <div class="grid">
+    <form class="card" id="calc" onsubmit="return false" aria-label="Datos para el cálculo">
+      <label for="bruto">Salario bruto anual (€)</label>
+      <input id="bruto" type="text" inputmode="decimal" value="24000" autocomplete="off">
+
+      <label for="tipo">Motivo de la baja</label>
+      <select id="tipo">
+        <option value="comun" selected>Enfermedad común o accidente no laboral</option>
+        <option value="profesional">Accidente de trabajo o enfermedad profesional</option>
+      </select>
+
+      <label for="dias">Días de baja <span class="hint">(naturales)</span></label>
+      <input id="dias" type="number" min="1" max="545" value="30">
+
+      <label class="check"><input id="complemento" type="checkbox"> Mi convenio complementa la baja hasta el 100 %</label>
+
+      <details class="more">
+        <summary>Más opciones</summary>
+        <label for="base">Base de cotización del mes anterior (€) <span class="hint">(aparece en tu nómina; si la rellenas, se usa en lugar del salario)</span></label>
+        <input id="base" type="text" inputmode="decimal" placeholder="Opcional">
+      </details>
+    </form>
+
+    <section class="card result" aria-live="polite">
+      <div class="sub" style="margin:0 0 4px">Cobrarás por la baja</div>
+      <div class="big" id="total">—</div>
+      <div class="sub" id="total-sub"></div>
+      <div class="kpis">
+        <div class="kpi"><small>Base reguladora diaria</small><b id="k-diaria">—</b></div>
+        <div class="kpi"><small>Pierdes frente a tu sueldo</small><b id="k-perdida">—</b></div>
+      </div>
+      <table class="desglose" id="tramos"></table>
+      <p class="note" id="requisito"></p>
+      <p class="note">Importes brutos: a la prestación se le aplica tu retención de IRPF y la cotización a la Seguridad Social, igual que a la nómina.</p>
+    </section>
+  </div>
+
+  <article>
+    <h2>Cuánto se cobra de baja en 2026</h2>
+    <p>La prestación por incapacidad temporal se calcula sobre la <strong>base reguladora</strong>: la base de cotización del mes anterior a la baja dividida entre 30. El porcentaje depende del motivo y de los días que lleves de baja:</p>
+    <div class="scroll"><table class="tabla">
+      <tr><th>Motivo</th><th>Días</th><th>Porcentaje</th><th>Quién paga</th></tr>
+      <tr><td rowspan="4">Enfermedad común o accidente no laboral</td><td>1 a 3</td><td>0 %</td><td>Nadie, salvo convenio</td></tr>
+      <tr><td>4 a 15</td><td>60 %</td><td>Empresa</td></tr>
+      <tr><td>16 a 20</td><td>60 %</td><td>INSS o mutua</td></tr>
+      <tr><td>Desde el 21</td><td>75 %</td><td>INSS o mutua</td></tr>
+      <tr><td rowspan="2">Accidente de trabajo o enfermedad profesional</td><td>Día de la baja</td><td>100 % del salario</td><td>Empresa</td></tr>
+      <tr><td>Desde el día siguiente</td><td>75 %</td><td>Mutua o INSS</td></tr>
+    </table></div>
+    <p>Aunque desde el día 16 paga la Seguridad Social o la mutua, lo normal es que lo sigas cobrando en tu nómina: la empresa lo adelanta y luego lo descuenta de sus cotizaciones (pago delegado).</p>
+
+    <h2>Ejemplo: 30 días de baja con 24.000 € al año</h2>
+    <p>Lucía cobra <strong>24.000 € brutos al año</strong>, así que su base de cotización es de 2.000,00 € al mes y su base reguladora diaria, de <strong>66,67 €</strong>. Está 30 días de baja por una gripe complicada:</p>
+    <div class="scroll"><table class="tabla">
+      <tr><th>Tramo</th><th>%</th><th>Cálculo</th><th>Importe</th><th>Paga</th></tr>
+      <tr><td>Días 1–3</td><td>0 %</td><td>3 × 0 €</td><td>0,00 €</td><td>—</td></tr>
+      <tr><td>Días 4–15</td><td>60 %</td><td>12 × 40,00 €</td><td>480,00 €</td><td>Empresa</td></tr>
+      <tr><td>Días 16–20</td><td>60 %</td><td>5 × 40,00 €</td><td>200,00 €</td><td>INSS o mutua</td></tr>
+      <tr><td>Días 21–30</td><td>75 %</td><td>10 × 50,00 €</td><td>500,00 €</td><td>INSS o mutua</td></tr>
+      <tr><td><strong>Total</strong></td><td></td><td></td><td><strong>1.180,00 €</strong></td><td></td></tr>
+    </table></div>
+    <p>Trabajando habría generado 2.000,00 € en esos 30 días (con la parte de las pagas extra), así que la baja le cuesta unos <strong>820 € brutos</strong>. Si hubiera sido un accidente de trabajo, cobraría 1.516,67 € y perdería solo 483 €.</p>
+
+    <h2>El complemento del convenio</h2>
+    <p>Muchos convenios colectivos obligan a la empresa a completar la prestación hasta el 100 % del salario, a veces desde el primer día y otras solo a partir de cierto día o para bajas con hospitalización. Busca en tu convenio la palabra «incapacidad temporal» o «complemento». Si lo tienes, marca la casilla de la calculadora.</p>
+
+    <h2>Baja médica, vacaciones y despido</h2>
+    <p>Si la baja coincide con tus vacaciones, tienes derecho a disfrutarlas después, aunque haya terminado el año. Y si te despiden estando de baja, la empresa debe pagarte el <a href="/finiquito/">finiquito</a> con las vacaciones que no hayas podido disfrutar. Si la baja se alarga y te quedas sin trabajo, puedes calcular tu <a href="/paro/">prestación por desempleo</a>.</p>
+
+    <h2>Preguntas frecuentes</h2>
+    <h3>¿Cuánto se cobra de baja por enfermedad común?</h3>
+    <p>Los tres primeros días no se cobra nada (salvo que tu convenio diga otra cosa). Del día 4 al 20 se cobra el 60 % de la base reguladora y, a partir del día 21, el 75 %.</p>
+    <h3>¿Y si es un accidente de trabajo?</h3>
+    <p>El día del accidente la empresa te paga el salario completo y, desde el día siguiente, cobras el 75 % de la base reguladora, sin necesidad de haber cotizado un mínimo.</p>
+    <h3>¿Qué es la base reguladora de la baja?</h3>
+    <p>La base de cotización del mes anterior a la baja dividida entre 30 (si cobras por meses). Incluye la parte proporcional de las pagas extra, por eso suele ser algo mayor que tu nómina bruta mensual.</p>
+    <h3>¿Quién me paga cuando estoy de baja?</h3>
+    <p>En enfermedad común, la empresa paga del día 4 al 15 y la Seguridad Social o la mutua desde el día 16, aunque normalmente lo sigues cobrando en la nómina porque la empresa lo adelanta (pago delegado).</p>
+    <h3>¿Cuántos días hay que haber cotizado?</h3>
+    <p>Para la baja por enfermedad común, 180 días en los últimos cinco años. Para el accidente de trabajo o la enfermedad profesional no se exige ningún periodo mínimo.</p>
+    <h3>¿La baja tributa en el IRPF?</h3>
+    <p>Sí. La prestación por incapacidad temporal es un rendimiento del trabajo y lleva retención, y mientras estás de baja sigues cotizando a la Seguridad Social.</p>
+
+    <section class="sources" id="fuentes">
+      <h2>Fuentes oficiales</h2>
+      <ul>
+        <li><a href="https://www.seg-social.es/descarga/es/26112024guiacas" rel="nofollow noopener" target="_blank">Seguridad Social: guía de la prestación por incapacidad temporal</a></li>
+        <li><a href="https://www.boe.es/buscar/act.php?id=BOE-A-2015-11724" rel="nofollow noopener" target="_blank">BOE: Ley General de la Seguridad Social (texto consolidado)</a></li>
+      </ul>
+      <p class="note">Revisamos la normativa cada semana. Última actualización: 23 de noviembre de 2026. <a href="/como-calculamos/">Cómo hacemos los cálculos</a>.</p>
+    </section>
+  </article>
+</main>
+
+<footer><div class="wrap">
+  <p><a href="/aviso-legal.html">Aviso legal</a><a href="/privacidad.html">Privacidad</a><a href="/cookies.html">Cookies</a><a href="/como-calculamos/">Quiénes somos y cómo calculamos</a><a href="/insertar/">Pon la calculadora en tu web</a></p>
+  <p>Porcentajes y base máxima de cotización de 2026. Los resultados son orientativos.</p>
+</div></footer>
+
+<script src="baja.js"></script>
+<script>
+(function(){
+  "use strict";
+  var eur=new Intl.NumberFormat("es-ES",{style:"currency",currency:"EUR"});
+  var pct=function(v){return v.toLocaleString("es-ES",{minimumFractionDigits:2,maximumFractionDigits:2})+" %"};
+  var num=function(v){return parseFloat(String(v).replace(/\./g,"").replace(",","."))||0};
+  var $=function(i){return document.getElementById(i)};
+  function pintar(){
+    var r=Baja.calcular({bruto:num($("bruto").value),baseMensual:num($("base").value),tipo:$("tipo").value,
+      dias:+$("dias").value||0,complemento:$("complemento").checked});
+    $("total").textContent=eur.format(r.total);
+    $("total-sub").textContent="brutos por "+r.dias+" días de baja"+(r.complementoEmpresa>0?" (con el complemento de la empresa)":"");
+    $("k-diaria").textContent=eur.format(r.diaria);
+    $("k-perdida").textContent=eur.format(r.perdida);
+    var h="";
+    r.tramos.forEach(function(t){
+      h+="<tr><td>Días "+t.desde+(t.hasta!==t.desde?"–"+t.hasta:"")+" <span class=\"hint\">("+t.pct+" % · "+t.paga+")</span></td><td>"+eur.format(t.importe)+"</td></tr>";
+    });
+    if(r.complementoEmpresa>0) h+="<tr><td>Complemento del convenio</td><td>"+eur.format(r.complementoEmpresa)+"</td></tr>";
+    h+="<tr class=\"total\"><td>Total de la baja</td><td>"+eur.format(r.total)+"</td></tr>";
+    h+="<tr><td class=\"hint\">Salario de esos días (con pagas prorrateadas)</td><td class=\"hint\">"+eur.format(r.normal)+"</td></tr>";
+    $("tramos").innerHTML=h;
+    $("requisito").textContent=r.requisito;
+    $("requisito").hidden=!r.requisito;
+  }
+  document.querySelectorAll("#calc input,#calc select").forEach(function(el){el.addEventListener("input",pintar);el.addEventListener("change",pintar)});
+  pintar();
+})();
+</script>
+</body>
+</html>

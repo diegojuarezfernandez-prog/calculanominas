@@ -29,12 +29,13 @@
 <body>
 <header class="top"><div class="wrap">
   <a class="logo" href="/">Calcula<span>Nominas</span>.es</a>
-  <nav><a href="/">Sueldo neto</a><a href="/neto-a-bruto/">Neto a bruto</a><a href="/finiquito/">Finiquito</a><a href="/paro/">Paro</a></nav>
+  <nav><a href="/">Sueldo neto</a><a href="/neto-a-bruto/">Neto a bruto</a><a href="/finiquito/">Finiquito</a><a href="/paro/">Paro</a><a href="/paga-extra/">Paga extra</a><a href="/baja-medica/">Baja médica</a></nav>
 </div></header>
 
 <main class="wrap">
   <h1>Calculadora de neto a bruto 2026</h1>
   <p class="lead">¿Quieres cobrar una cantidad concreta al mes? Descubre qué salario bruto anual tienes que pedir. Muy útil para negociar una oferta de trabajo.</p>
+  <p class="updated">Actualizado el 23 de noviembre de 2026 · Datos oficiales de <a href="https://sede.agenciatributaria.gob.es/static_files/Sede/Programas_ayuda/Retenciones/2026/Algoritmo%20Retenciones-2026_10sept.pdf" rel="nofollow noopener" target="_blank">Agencia Tributaria</a> y <a href="https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/CotizacionRecaudacionTrabajadores/36537" rel="nofollow noopener" target="_blank">Seguridad Social</a> · <a href="/como-calculamos/">Cómo calculamos</a></p>
 
   <div class="grid">
     <form class="card" id="calc" onsubmit="return false" aria-label="Datos para el cálculo">
@@ -105,6 +106,7 @@
       <tr><td>2.500 €</td><td>49.989 €</td><td>40.585 €</td></tr>
       <tr><td>3.000 €</td><td>62.027 €</td><td>50.769 €</td></tr>
     </table></div>
+    <!--cifras--><p>Cálculo completo para cobrar <a href="/neto-a-bruto/1000/">1.000 €</a>, <a href="/neto-a-bruto/1100/">1.100 €</a>, <a href="/neto-a-bruto/1200/">1.200 €</a>, <a href="/neto-a-bruto/1300/">1.300 €</a>, <a href="/neto-a-bruto/1400/">1.400 €</a>, <a href="/neto-a-bruto/1500/">1.500 €</a>, <a href="/neto-a-bruto/1600/">1.600 €</a>, <a href="/neto-a-bruto/1700/">1.700 €</a>, <a href="/neto-a-bruto/1800/">1.800 €</a>, <a href="/neto-a-bruto/1900/">1.900 €</a>, <a href="/neto-a-bruto/2000/">2.000 €</a>, <a href="/neto-a-bruto/2200/">2.200 €</a>, <a href="/neto-a-bruto/2500/">2.500 €</a>, <a href="/neto-a-bruto/3000/">3.000 €</a> netos al mes.</p>
 
 
     <h2>Ejemplo: ¿cuánto bruto necesito para cobrar 1.500 € netos?</h2>
@@ -141,11 +143,20 @@
     <p>Calcula el neto mensual que necesitas, mira el bruto que te sale aquí y redondea hacia arriba. Así evitas llevarte una sorpresa en tu primera nómina.</p>
     <h3>¿Y al revés?</h3>
     <p>Si ya tienes una oferta con el salario bruto, usa la <a href="/">calculadora de sueldo neto</a> para saber cuánto cobrarás.</p>
+
+    <section class="sources" id="fuentes">
+      <h2>Fuentes oficiales</h2>
+      <ul>
+        <li><a href="https://sede.agenciatributaria.gob.es/static_files/Sede/Programas_ayuda/Retenciones/2026/Algoritmo%20Retenciones-2026_10sept.pdf" rel="nofollow noopener" target="_blank">Agencia Tributaria: algoritmo de cálculo de las retenciones de IRPF 2026</a></li>
+        <li><a href="https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/CotizacionRecaudacionTrabajadores/36537" rel="nofollow noopener" target="_blank">Seguridad Social: bases y tipos de cotización 2026</a></li>
+      </ul>
+      <p class="note">Revisamos la normativa cada semana. Última actualización: 23 de noviembre de 2026. <a href="/como-calculamos/">Cómo hacemos los cálculos</a>.</p>
+    </section>
   </article>
 </main>
 
 <footer><div class="wrap">
-  <p><a href="/aviso-legal.html">Aviso legal</a><a href="/privacidad.html">Privacidad</a><a href="/cookies.html">Cookies</a></p>
+  <p><a href="/aviso-legal.html">Aviso legal</a><a href="/privacidad.html">Privacidad</a><a href="/cookies.html">Cookies</a><a href="/como-calculamos/">Quiénes somos y cómo calculamos</a><a href="/insertar/">Pon la calculadora en tu web</a></p>
   <p>Datos actualizados a 2026 según el algoritmo de retenciones de la Agencia Tributaria y la orden de cotización de la Seguridad Social. Los resultados son orientativos.</p>
 </div></footer>
 
@@ -186,6 +197,7 @@
     $("d-neto").textContent=eur.format(r.netoAnual);
   }
   document.querySelectorAll("#calc input,#calc select").forEach(function(el){el.addEventListener("input",pintar);el.addEventListener("change",pintar)});
+  var q=/[?&]neto=(\d+(?:[.,]\d+)?)/.exec(location.search); if(q) $("neto").value=q[1];
   pintar();
 })();
 </script>

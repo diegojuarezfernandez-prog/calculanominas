@@ -1,2 +1,15 @@
 [build]
   publish = "."
+
+# El generador de páginas (tools/) no se publica
+[[redirects]]
+  from = "/tools/*"
+  to = "/404.html"
+  status = 404
+  force = true
+
+# La calculadora insertable se puede mostrar dentro de otras webs
+[[headers]]
+  for = "/widget/*"
+  [headers.values]
+    Content-Security-Policy = "frame-ancestors *"
