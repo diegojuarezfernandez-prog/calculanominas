@@ -7,6 +7,8 @@
     [2160, 720], [1980, 660], [1800, 600], [1620, 540], [1440, 480], [1260, 420],
     [1080, 360], [900, 300], [720, 240], [540, 180], [360, 120]
   ];
+  // Cotización del beneficiario 2026: 4,70 % contingencias comunes + 0,15 % MEI (SEPE, cuantías anuales)
+  var COTIZ = 0.0485;
   function r2(x) { return Math.round((x + 1e-9) * 100) / 100; }
 
   function duracion(diasCotizados) {
@@ -29,7 +31,7 @@
       var bruto = base * pct, tope = "";
       if (bruto > maxP) { bruto = maxP; tope = "máximo"; }
       else if (bruto < minP) { bruto = minP; tope = "mínimo"; }
-      var ss = base * 0.047; // cotización a cargo del trabajador (4,70 % de la base reguladora)
+      var ss = base * COTIZ; // cotización a cargo del trabajador sobre la base reguladora
       if (ss > bruto) ss = 0;
       return { bruto: r2(bruto), ss: r2(ss), neto: r2(bruto - ss), tope: tope };
     }
